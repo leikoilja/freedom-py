@@ -54,7 +54,10 @@ class FreedomClient(object):
 
     def _get_devices(self):
         response = self.session.get(ENDPOINT_DEVICES)
-        return response.json()
+        response_json = response.json()
+        print("All devices")
+        print(response_json)
+        return response_json
 
     def get_device_ids(self):
         devices = self._get_devices()['devices']
@@ -63,7 +66,10 @@ class FreedomClient(object):
 
     def _get_filters(self):
         response = self.session.get(ENDPOINT_FILTERS)
-        return response.json()
+        response_json = response.json()
+        print("All filters")
+        print(response_json)
+        return response_json
 
     def get_filter_ids(self):
         filters = self._get_filters()['filter_lists']
