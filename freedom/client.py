@@ -1,8 +1,10 @@
+from random import randrange
 from requests import Session
 
 
 ENDPOINT_DEVICES = "https://freedom.to/devices/"
 ENDPOINT_FILTERS = "https://freedom.to/filter_lists/"
+ENDPOINT_LOGIN = "https://freedom.to/auth/oauth/token"
 ENDPOINT_SCHEDULES = "https://freedom.to/api/v1/schedules"
 
 
@@ -12,7 +14,8 @@ class FreedomClient(object):
     Create an instance of this class, passing it the value of the
     "token" for Freedom.to.
 
-    Note for input arguments:
+    Note:
+    You can get a token by running get_token method using your email/password.
     token must be a long-lived access token.
     device_ids must be a list of user devices.
     """
@@ -26,6 +29,19 @@ class FreedomClient(object):
         headers = {'Authorization': f"Bearer {token}"}
         self.session.headers.update(headers)
         self.device_ids = device_ids;
+
+    def get_token(self, email, password):
+        data = {
+            "grant_type": "password",
+            "hash": f"{randrange(0,10,1)}785A3F6-{randrange(0,10,1)}FA7-55EB-AC98-BFC0A17520D0",
+            "os": "ios",
+            "password": password,
+            "response_type": "code",
+            "scope": "email",
+            "username": email
+        }
+        response = self.session.post(ENDPOINT_LOGIN, data=data)
+        return response.json()['access_token']
 
     def activate_session(self, duration_sec, filter_list_ids):
         data = {

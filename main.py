@@ -3,8 +3,13 @@ from freedom.client import FreedomClient
 
 
 # Make sure to have environment variable TOKEN
-# Or simply hardcode your token here
 token = getenv('TOKEN')
+
+# If you dont have a token you can get it using get_token method and save it under environment variables
+# Note: to avoid problems it's recommended you get a token just once and then reuse it
+#  EMAIL = 'example@example.com'
+#  PASSWORD = 'password'
+#  token = client.get_token(email=EMAIL, password=PASSWORD))
 
 # List of device ids that will be blocked
 device_ids = [

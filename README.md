@@ -83,6 +83,6 @@ If there are missing features please open a new issue with feature request.
 PRs are very welcomed.
 
 # TODO
-- [ ] Write a paragraph how to easily find one's authentication TOKEN
+- [x] Implement POST to easily find one's long lived authentication TOKEN
 - [x] Implement GET request to fetch and show device ids
 - [x] Implement GET request to fetch and show filter ids
