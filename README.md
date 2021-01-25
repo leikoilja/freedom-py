@@ -10,6 +10,8 @@ Currently supported features:
 
 ## Quickstart
 
+See `main.py` for more detailed example
+
 Note: the package was written and tested on Python 3.
 
 - Clone the repo
